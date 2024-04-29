@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   AlertDialog,
@@ -8,23 +8,25 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { Button } from '@/components/ui/button';
+} from "@/components/ui/alert-dialog";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Loader } from '@/components/ui/loader';
-import { useMutation } from '@tanstack/react-query';
-import { LogOut } from 'lucide-react';
-import { Session } from 'next-auth';
-import { signOut } from 'next-auth/react';
+} from "@/components/ui/dropdown-menu";
+import { Loader } from "@/components/ui/loader";
+import { DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu";
+import { useMutation } from "@tanstack/react-query";
+import { LogOut, UserRound } from "lucide-react";
+import { Session } from "next-auth";
+import { signOut } from "next-auth/react";
+import Link from "next/link";
 
 export type LoggedInButtonProps = {
-  user: Session['user'];
+  user: Session["user"];
 };
 
 export const LoggedInButton = (props: LoggedInButtonProps) => {
@@ -44,7 +46,7 @@ export const LoggedInButton = (props: LoggedInButtonProps) => {
               {props.user.image && (
                 <AvatarImage
                   src={props.user.image}
-                  alt={props.user.name ?? 'user picture'}
+                  alt={props.user.name ?? "user picture"}
                 />
               )}
             </Avatar>
@@ -52,16 +54,23 @@ export const LoggedInButton = (props: LoggedInButtonProps) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent>
+          <DropdownMenuItem asChild>
+            <Link href="/account">
+            Mon Compte <UserRound className="ml-2" size={12} />
+            </Link>
+            </DropdownMenuItem>
+          <DropdownMenuSeparator />
           <AlertDialogTrigger asChild>
             <DropdownMenuItem>
-              <LogOut className="mr-2" size={12} />
-              Déconnexion
+              Déconnexion <LogOut className="ml-2" size={12} />
             </DropdownMenuItem>
           </AlertDialogTrigger>
         </DropdownMenuContent>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Êtes-vous vraiment sûr de vouloir vous déconnecter ?</AlertDialogTitle>
+            <AlertDialogTitle>
+              Êtes-vous vraiment sûr de vouloir vous déconnecter ?
+            </AlertDialogTitle>
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel asChild>

@@ -1,9 +1,9 @@
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { Typography } from "@/components/ui/typography";
+import { AuthButton } from "@/features/auth/AuthButton";
 import { SiteConfig } from "@/lib/site-config";
 import Image from "next/image";
 import Link from "next/link";
-import { AuthButton } from "./features/auth/AuthButton";
 
 export function Header() {
   return (
