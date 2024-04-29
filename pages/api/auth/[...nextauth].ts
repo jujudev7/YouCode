@@ -9,6 +9,7 @@ export const authOptions: AuthOptions = {
   adapter: PrismaAdapter(prisma) as Adapter,
   theme: {
     logo: '/images/logo-text.png',
+    colorScheme: "dark",
   },
   providers: [
     GithubProvider({

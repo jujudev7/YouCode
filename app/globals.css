@@ -74,3 +74,11 @@
       @apply bg-background text-foreground;
     }
   }
+
+  .__next-auth-theme-auto {
+    --color-background-card:#000;
+  }
+
+  .card {
+    background: #000 !important;
+  }
